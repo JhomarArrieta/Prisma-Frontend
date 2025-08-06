@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Prisma-Frontend": {
+    "angular1": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Prisma-Frontend:build:production"
+              "buildTarget": "angular1:build:production"
             },
             "development": {
-              "buildTarget": "Prisma-Frontend:build:development"
+              "buildTarget": "angular1:build:development"
             }
           },
           "defaultConfiguration": "development"
