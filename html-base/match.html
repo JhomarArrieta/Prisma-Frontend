@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tus Matches</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="heart-icon">💖</div>
+                <h1>Tus Matches</h1>
+            </div>
+            <div class="nav-icons">
+                <div class="nav-icon" onclick="window.location.href='home.html'">🏠</div>
+                <div class="nav-icon">💬</div>
+                <div class="nav-icon">🔔</div>
+            </div>
+        </header>
+
+        <!-- Filters -->
+        <div class="filters">
+            <span class="filter-label">Filtrar por:</span>
+            <div class="filter-dropdown">
+                <select id="relaciones">
+                    <option>Relaciones</option>
+                    <option>Casual</option>
+                    <option>Amistad</option>
+                </select>
+            </div>
+            <div class="filter-dropdown">
+                <select id="tiempo">
+                    <option>Más reciente</option>
+                    <option>Más antiguo</option>
+                    <option>Alfabético</option>
+                </select>
+            </div>
+            <div class="filter-dropdown">
+                <select id="ubicacion">
+                    <option>Medellín</option>
+                    <option>Itagüi</option>
+                    <option>Envigado</option>
+                    <option>Bello</option>
+                    <option>Vallé de Aburrá</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Matches Grid -->
+        <div class="matches-grid">
+            <div class="match-card" data-name="Mariana">
+                <div class="profile-image"></div>
+                <div class="match-name">Mariana</div>
+            </div>
+
+            <div class="match-card" data-name="Luisa">
+                <div class="profile-image"></div>
+                <div class="match-name">Luisa</div>
+            </div>
+
+            <div class="match-card" data-name="Maria">
+                <div class="profile-image"></div>
+                <div class="match-name">Maria</div>
+            </div>
+
+            <div class="match-card" data-name="Carla">
+                <div class="profile-image"></div>
+                <div class="match-name">Carla</div>
+            </div>
+
+            <div class="match-card" data-name="Sofia">
+                <div class="profile-image"></div>
+                <div class="match-name">Sofia</div>
+            </div>
+
+            <div class="match-card" data-name="Laura">
+                <div class="profile-image"></div>
+                <div class="match-name">Laura</div>
+            </div>
+
+            <div class="match-card" data-name="Sara">
+                <div class="profile-image"></div>
+                <div class="match-name">Sara</div>
+            </div>
+
+            <div class="match-card" data-name="Melissa">
+                <div class="profile-image"></div>
+                <div class="match-name">Melissa</div>
+            </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
