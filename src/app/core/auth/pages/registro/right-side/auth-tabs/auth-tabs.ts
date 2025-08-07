@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Output, output } from '@angular/core';
 import { AuthFormLogin } from "../auth-form/auth-form-login/auth-form-login";
-import { AuthFormSignedin } from "../auth-form/auth-form-signedin/auth-form-signedin";
+import { AuthFormSignIn } from "../auth-form/auth-form-signin/auth-form-signin";
 
 @Component({
   selector: 'app-auth-tabs-right-side',
-  imports: [AuthFormLogin, AuthFormSignedin],
+  imports: [AuthFormLogin, AuthFormSignIn],
   templateUrl: './auth-tabs.html',
   styleUrl: './auth-tabs.css'
 })

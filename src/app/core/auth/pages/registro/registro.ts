@@ -11,3 +11,4 @@ import { RightSide } from "./right-side/right-side";
 export class Registro {
 
 }
+

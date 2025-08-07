@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { AuthFormLogin } from "./auth-form-login/auth-form-login";
-import { AuthFormSignedin } from "./auth-form-signedin/auth-form-signedin";
+import { AuthFormSignIn } from "./auth-form-signin/auth-form-signin";
 
 @Component({
   selector: 'app-auth-form-right-side',
-  imports: [AuthFormLogin, AuthFormSignedin],
+  imports: [AuthFormLogin, AuthFormSignIn],
   templateUrl: './auth-form.html',
   styleUrl: './auth-form.css'
 })

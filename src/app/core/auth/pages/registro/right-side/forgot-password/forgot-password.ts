@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './forgot-password.css'
 })
 export class ForgotPassword {
-
+  forgotPassword() {
+    alert('Te enviaremos un enlace para restablecer tu contraseña 📧');
+  }
 }
+
