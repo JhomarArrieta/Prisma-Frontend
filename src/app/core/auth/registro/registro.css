@@ -1,0 +1,13 @@
+.registro-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  height: 100vh; 
+  width: 100vw;
+}
+
+@media (max-width: 768px) {
+    .registro-container {
+        flex-direction: column;
+    }
+}

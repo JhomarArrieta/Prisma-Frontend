@@ -19,6 +19,16 @@
     background-color: #FFFFFF;
 }
 
+.form-group select {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #FEDBD6;
+    border-radius: 12px;
+    font-size: 1rem;
+    background-color: #FFFFFF;
+    transition: all 0.3s;
+}
+
 .form-group input:focus {
     outline: none;
     border-color: #FFB4C8;
@@ -50,10 +60,3 @@
     transform: none;
 }
 
-.additional-fields {
-    display: none;
-}
-
-.additional-fields.show {
-    display: block;
-}

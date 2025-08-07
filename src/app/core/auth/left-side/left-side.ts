@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-left-side',
+  selector: 'app-left-side-registro',
   imports: [],
   templateUrl: './left-side.html',
-  styleUrl: './left-side.css'
+  styleUrls: ['./left-side.css']
 })
 export class LeftSide {
 

@@ -1,56 +1,11 @@
 .main-container {
     display: flex;
     height: 100vh;
+    width: 100vw;
 }
 
 @media (max-width: 768px) {
     .main-container {
         flex-direction: column;
-    }
-
-    .left-side {
-        flex: 0 0 40%;
-        padding: 1rem;
-    }
-
-    .right-side {
-        flex: 1;
-        padding: 1rem;
-    }
-
-    .app-name {
-        font-size: 2.5rem;
-    }
-
-    .logo-icon {
-        font-size: 4rem;
-    }
-
-    .slogan {
-        font-size: 1.1rem;
-    }
-
-    .divider {
-        height: 1px;
-        width: 100%;
-        background: linear-gradient(to right, transparent 0%, #FFB4C8 20%, #FEDBD6 50%, #FFB4C8 80%, transparent 100%);
-    }
-
-    .auth-container {
-        padding: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .auth-container {
-        padding: 1.5rem;
-    }
-
-    .app-name {
-        font-size: 2rem;
-    }
-
-    .logo-icon {
-        font-size: 3rem;
     }
 }

@@ -1,0 +1,7 @@
+<form class="form-group">
+    @if (tabLogin) {
+        <app-auth-form-login></app-auth-form-login>
+    }@else {
+        <app-auth-form-signedin></app-auth-form-signedin>
+    }
+</form>
