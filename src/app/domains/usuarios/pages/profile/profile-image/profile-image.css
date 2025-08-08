@@ -1,0 +1,53 @@
+.profile-photo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-photo {
+    width: 250px;
+    height: 350px;
+    background: linear-gradient(135deg, #FFB4C8 0%, #FF8FA3 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(255, 180, 200, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 180, 200, 0.4);
+}
+
+.edit-photo-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 240, 230, 0.8);
+    border: 2px solid rgba(255, 180, 200, 0.3);
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    font-weight: 500;
+}
+
+.edit-photo-btn:hover {
+    background: rgba(255, 240, 230, 0.9);
+    border-color: rgba(255, 180, 200, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 180, 200, 0.2);
+}
+
+.edit-icon {
+    font-size: 18px;
+}

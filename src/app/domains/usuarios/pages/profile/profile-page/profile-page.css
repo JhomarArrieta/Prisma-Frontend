@@ -1,0 +1,20 @@
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffb4c8;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.btn-back {
+  background: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-back:hover {
+  background: #f5f5f5;
+}
