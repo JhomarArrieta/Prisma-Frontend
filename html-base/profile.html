@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Perfil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <div class="profile-icon">👤</div>
+                <h1>Tu Perfil</h1>
+            </div>
+            <div class="nav-icons">
+                <div class="nav-icon" onclick="window.location.href='home.html'">🏠</div>
+                <div class="nav-icon" data-action="notifications">🔔</div>
+            </div>
+        </header>
+
+        <div class="profile-content">
+            <div class="profile-photo-section">
+                <div class="profile-photo">
+                    <div class="silhouette">
+                        <div class="silhouette-head"></div>
+                        <div class="silhouette-body"></div>
+                    </div>
+                </div>
+                <button class="edit-photo-btn" id="editPhotoBtn">
+                    <span>Agregar foto</span>
+                </button>
+            </div>
+
+            <div class="form-content">
+                <div class="form-section">
+                    <h2 class="section-title">Descripción</h2>
+                    <div class="description-container">
+                        <textarea 
+                            id="description" 
+                            class="description-input" 
+                            placeholder="Escribe algo sobre ti..."
+                            maxlength="500"
+                        ></textarea>
+                        <div class="character-count">
+                            <span id="charCount">0</span>/500
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preferences-grid">
+                    <div class="preferences-column">
+                        <h2 class="section-title">Preferencias</h2>
+                        
+                        <div class="form-group">
+                            <select id="relacion" class="form-select">
+                                <option value="seria">Relación Seria</option>
+                                <option value="casual">Relación Casual</option>
+                                <option value="amistad">Solo Amistad</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select id="hijos" class="form-select">
+                                <option value="quiero">Quiero Tener Hijos</option>
+                                <option value="no_quiero">No Quiero Hijos</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select id="ubicacion" class="form-select">
+                                <option value="">Valle de Aburrá</option>
+                                <option value="medellin">Medellín</option>
+                                <option value="bello">Bello</option>
+                                <option value="envigado">Envigado</option>
+                                <option value="itagui">Itagüí</option>
+                                <option value="sabaneta">Sabaneta</option>
+                                <option value="copacabana">Copacabana</option>
+                                <option value="caldas">Caldas</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="interests-column">
+                        <h2 class="section-title">Gustos</h2>
+                        
+                        <div class="form-group">
+                            <select id="peliculas" class="form-select">
+                                <option value="">Películas</option>
+                                <option value="accion">Acción</option>
+                                <option value="comedia">Comedia</option>
+                                <option value="drama">Drama</option>
+                                <option value="terror">Terror</option>
+                                <option value="romance">Romance</option>
+                                <option value="ciencia_ficcion">Ciencia Ficción</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select id="cocina" class="form-select">
+                                <option value="">Hobby</option>
+                                <option value="pintura">Pintura</option>
+                                <option value="musica">Música</option>
+                                <option value="baile">Baile</option>
+                                <option value="juegos">Juegos de Mesa</option>
+                                <option value="viajar">Viajar</option>
+                                <option value="lectura">Lectura</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select id="deporte" class="form-select">
+                                <option value="">Deporte</option>
+                                <option value="futbol">Fútbol</option>
+                                <option value="gym">Gimnasio</option>
+                                <option value="basketbol">Basketbol</option>
+                                <option value="voeibol">Voleibol</option>
+                                <option value="natacion">Natación</option>
+                                <option value="ciclismo">Ciclismo</option>
+                                <option value="tenis">Tenis</option>
+                                <option value="running">Running</option>
+                                <option value="yoga">Yoga</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="save-section">
+                    <button class="save-btn" id="saveBtn">
+                        <span>Guardar Cambios</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="photoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Cambiar Foto de Perfil</h3>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📷</div>
+                    <p>Arrastra una imagen aquí o haz click para seleccionar</p>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                </div>
+                <div class="modal-buttons">
+                    <button class="btn-secondary" id="cancelBtn">Cancelar</button>
+                    <button class="btn-primary" id="uploadBtn">Subir Foto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

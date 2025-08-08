@@ -404,4 +404,491 @@ function capitalizeFirst(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+/* Perfil */
+const userProfile = {
+    description: '',
+    preferences: {
+        relacion: 'seria',
+        hijos: 'sin',
+        ubicacion: 'medellin'
+    },
+    interests: {
+        peliculas: 'accion',
+        cocina: 'italiana',
+        deporte: 'gym'
+    }
+};
+
+let descriptionInput;
+let charCount;
+let saveBtn;
+let editPhotoBtn;
+let photoModal;
+let uploadArea;
+let fileInput;
+
+document.addEventListener('DOMContentLoaded', function() {
+    initializeElements();
+    loadUserProfile();
+    setupEventListeners();
+    setupAnimations();
+    console.log('Página de perfil inicializada');
+});
+
+function initializeElements() {
+    descriptionInput = document.getElementById('description');
+    charCount = document.getElementById('charCount');
+    saveBtn = document.getElementById('saveBtn');
+    editPhotoBtn = document.getElementById('editPhotoBtn');
+    photoModal = document.getElementById('photoModal');
+    uploadArea = document.getElementById('uploadArea');
+    fileInput = document.getElementById('fileInput');
+    navIcons = document.querySelectorAll('.nav-icon');
+}
+
+function setupEventListeners() {
+    if (descriptionInput && charCount) {
+        descriptionInput.addEventListener('input', updateCharacterCount);
+        descriptionInput.addEventListener('input', autoSaveDescription);
+    }
+
+    if (saveBtn) {
+        saveBtn.addEventListener('click', handleSaveProfile);
+    }
+
+    if (editPhotoBtn) {
+        editPhotoBtn.addEventListener('click', openPhotoModal);
+    }
+
+    setupModalEvents();
+
+    navIcons.forEach(icon => {
+        icon.addEventListener('click', handleNavigation);
+    });
+
+    setupFormEvents();
+
+    addHoverEffects();
+}
+
+function setupModalEvents() {
+    const closeBtn = document.getElementById('closeModal');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const uploadBtn = document.getElementById('uploadBtn');
+
+    if (closeBtn) closeBtn.addEventListener('click', closePhotoModal);
+    if (cancelBtn) cancelBtn.addEventListener('click', closePhotoModal);
+    if (uploadBtn) uploadBtn.addEventListener('click', handlePhotoUpload);
+
+    if (uploadArea) {
+        uploadArea.addEventListener('click', () => fileInput.click());
+        uploadArea.addEventListener('dragover', handleDragOver);
+        uploadArea.addEventListener('drop', handleDrop);
+    }
+
+    if (fileInput) {
+        fileInput.addEventListener('change', handleFileSelect);
+    }
+
+    if (photoModal) {
+        photoModal.addEventListener('click', (e) => {
+            if (e.target === photoModal) {
+                closePhotoModal();
+            }
+        });
+    }
+}
+
+function setupFormEvents() {
+    const selects = document.querySelectorAll('.form-select');
+    selects.forEach(select => {
+        select.addEventListener('change', handleFormChange);
+        select.addEventListener('focus', handleSelectFocus);
+        select.addEventListener('blur', handleSelectBlur);
+    });
+}
+
+function loadUserProfile() {
+    const savedProfile = getStoredProfile();
+    if (savedProfile) {
+        Object.assign(userProfile, savedProfile);
+        updateFormFields();
+    }
+}
+
+function getStoredProfile() {
+    return {
+        description: 'Me encanta viajar, conocer nuevas culturas y disfrutar de una buena conversación. Busco a alguien con quien compartir aventuras y crear memorias increíbles.',
+        preferences: {
+            relacion: 'seria',
+            hijos: 'sin',
+            ubicacion: 'medellin'
+        },
+        interests: {
+            peliculas: 'comedia',
+            cocina: 'italiana',
+            deporte: 'ciclismo'
+        }
+    };
+}
+
+function updateFormFields() {
+    if (descriptionInput) {
+        descriptionInput.value = userProfile.description || '';
+        updateCharacterCount();
+    }
+
+    Object.keys(userProfile.preferences).forEach(key => {
+        const element = document.getElementById(key);
+        if (element) {
+            element.value = userProfile.preferences[key] || '';
+        }
+    });
+
+    Object.keys(userProfile.interests).forEach(key => {
+        const element = document.getElementById(key);
+        if (element) {
+            element.value = userProfile.interests[key] || '';
+        }
+    });
+}
+
+function updateCharacterCount() {
+    if (!descriptionInput || !charCount) return;
+    
+    const currentLength = descriptionInput.value.length;
+    charCount.textContent = currentLength;
+    
+    if (currentLength > 450) {
+        charCount.style.color = '#ff6b6b';
+    } else if (currentLength > 400) {
+        charCount.style.color = '#ffa726';
+    } else {
+        charCount.style.color = '#888';
+    }
+}
+
+function autoSaveDescription() {
+    if (!descriptionInput) return;
+    userProfile.description = descriptionInput.value;
+}
+
+function handleFormChange(event) {
+    const element = event.target;
+    const category = element.closest('.preferences-column') ? 'preferences' : 'interests';
+    
+    userProfile[category][element.id] = element.value;
+    
+    element.style.borderColor = '#4CAF50';
+    setTimeout(() => {
+        element.style.borderColor = '';
+    }, 1000);
+    
+    showNotification(`${capitalizeFirst(element.id)} actualizado`);
+}
+
+function handleSelectFocus(event) {
+    const element = event.target;
+    element.style.transform = 'translateY(-2px)';
+    element.style.boxShadow = '0 5px 15px rgba(255, 180, 200, 0.2)';
+}
+
+function handleSelectBlur(event) {
+    const element = event.target;
+    element.style.transform = '';
+    element.style.boxShadow = '';
+}
+
+function handleSaveProfile() {
+    saveBtn.style.transform = 'scale(0.95)';
+    saveBtn.innerHTML = '<span>Guardando...</span><span class="save-icon">⏳</span>';
+    
+    setTimeout(() => {
+        saveProfile();
+        
+        saveBtn.style.transform = '';
+        saveBtn.innerHTML = '<span>Guardar Cambios</span><span class="save-icon">💾</span>';
+        
+        showNotification('¡Perfil guardado exitosamente!', 'success');
+        
+        createSuccessAnimation();
+    }, 1500);
+}
+
+function saveProfile() {
+    console.log('Guardando perfil:', userProfile);
+    // Aquí se enviarían los datos al servidor
+}
+
+function openPhotoModal() {
+    if (photoModal) {
+        photoModal.style.display = 'block';
+        setTimeout(() => {
+            photoModal.querySelector('.modal-content').style.transform = 'scale(1)';
+            photoModal.querySelector('.modal-content').style.opacity = '1';
+        }, 10);
+    }
+}
+
+function closePhotoModal() {
+    if (photoModal) {
+        const modalContent = photoModal.querySelector('.modal-content');
+        modalContent.style.transform = 'scale(0.9)';
+        modalContent.style.opacity = '0';
+        
+        setTimeout(() => {
+            photoModal.style.display = 'none';
+            modalContent.style.transform = 'scale(1)';
+            modalContent.style.opacity = '1';
+        }, 300);
+    }
+}
+
+function handleFileSelect(event) {
+    const file = event.target.files[0];
+    if (file) {
+        processPhotoFile(file);
+    }
+}
+
+function handleDragOver(event) {
+    event.preventDefault();
+    event.currentTarget.style.borderColor = '#FFB4C8';
+    event.currentTarget.style.background = 'rgba(255, 240, 230, 0.7)';
+}
+
+function handleDrop(event) {
+    event.preventDefault();
+    const files = event.dataTransfer.files;
+    if (files.length > 0) {
+        processPhotoFile(files[0]);
+    }
+    
+    event.currentTarget.style.borderColor = '';
+    event.currentTarget.style.background = '';
+}
+
+function processPhotoFile(file) {
+    if (!file.type.startsWith('image/')) {
+        showNotification('Por favor selecciona una imagen válida', 'error');
+        return;
+    }
+    
+    if (file.size > 5 * 1024 * 1024) { // 5MB límite
+        showNotification('La imagen es muy grande. Máximo 5MB', 'error');
+        return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        updatePhotoPreview(e.target.result);
+        showNotification('Imagen seleccionada correctamente');
+    };
+    reader.readAsDataURL(file);
+}
+
+function updatePhotoPreview(imageSrc) {
+    const profilePhoto = document.querySelector('.profile-photo');
+    const silhouette = profilePhoto.querySelector('.silhouette');
+    
+    const img = document.createElement('img');
+    img.src = imageSrc;
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'cover';
+    img.style.borderRadius = '20px';
+    
+    profilePhoto.innerHTML = '';
+    profilePhoto.appendChild(img);
+}
+
+function handlePhotoUpload() {
+    showNotification('Foto actualizada correctamente', 'success');
+    closePhotoModal();
+}
+
+function handleNavigation(event) {
+    const action = event.currentTarget.dataset.action;
+    
+    event.currentTarget.style.transform = 'scale(1.2)';
+    setTimeout(() => {
+        event.currentTarget.style.transform = '';
+    }, 200);
+    
+    switch(action) {
+        case 'home':
+            window.location.href = 'match.html';
+            break;
+        case 'chat':
+            showNotification('Abriendo mensajes...');
+            break;
+        case 'notifications':
+            showNotification('Mostrando notificaciones...');
+            break;
+    }
+}
+
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.textContent = message;
+    
+    const baseStyles = {
+        position: 'fixed',
+        top: '20px',
+        right: '20px',
+        padding: '15px 25px',
+        borderRadius: '25px',
+        fontWeight: '500',
+        boxShadow: '0 5px 15px rgba(255, 180, 200, 0.4)',
+        zIndex: '1000',
+        opacity: '0',
+        transform: 'translateX(100%)',
+        transition: 'all 0.3s ease',
+        color: 'white'
+    };
+    
+    const typeStyles = {
+        success: 'linear-gradient(135deg, #4CAF50, #45a049)',
+        error: 'linear-gradient(135deg, #f44336, #da190b)',
+        info: 'linear-gradient(135deg, #FFB4C8, #FF8FA3)'
+    };
+    
+    Object.assign(notification.style, baseStyles);
+    notification.style.background = typeStyles[type] || typeStyles.info;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
+function createSuccessAnimation() {
+    const successIcon = document.createElement('div');
+    successIcon.textContent = '✅';
+    successIcon.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        font-size: 60px;
+        z-index: 1001;
+        opacity: 0;
+        transition: all 0.5s ease;
+    `;
+    
+    document.body.appendChild(successIcon);
+    
+    setTimeout(() => {
+        successIcon.style.transform = 'translate(-50%, -50%) scale(1)';
+        successIcon.style.opacity = '1';
+    }, 100);
+    
+    setTimeout(() => {
+        successIcon.style.transform = 'translate(-50%, -50%) scale(0)';
+        successIcon.style.opacity = '0';
+        setTimeout(() => {
+            if (document.body.contains(successIcon)) {
+                document.body.removeChild(successIcon);
+            }
+        }, 500);
+    }, 1500);
+}
+
+function setupAnimations() {
+    const profileIcon = document.querySelector('.profile-icon');
+    if (profileIcon) {
+        setInterval(() => {
+            profileIcon.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                profileIcon.style.transform = 'scale(1)';
+            }, 500);
+        }, 3000);
+    }
+    
+    document.addEventListener('mousemove', (e) => {
+        const moveX = (e.clientX * -1 / 100);
+        const moveY = (e.clientY * -1 / 100);
+        document.body.style.backgroundPosition = `${moveX}px ${moveY}px`;
+    });
+}
+
+function addHoverEffects() {
+    const formSections = document.querySelectorAll('.form-section, .preferences-column, .interests-column');
+    formSections.forEach(section => {
+        section.addEventListener('mouseenter', () => {
+            section.style.transform = 'translateY(-2px)';
+            section.style.boxShadow = '0 10px 30px rgba(255, 180, 200, 0.2)';
+        });
+        
+        section.addEventListener('mouseleave', () => {
+            section.style.transform = '';
+            section.style.boxShadow = '';
+        });
+    });
+    
+    const profilePhoto = document.querySelector('.profile-photo');
+    if (profilePhoto) {
+        profilePhoto.addEventListener('mouseenter', () => {
+            const silhouette = profilePhoto.querySelector('.silhouette');
+            if (silhouette) {
+                silhouette.style.transform = 'scale(1.1) rotate(5deg)';
+            }
+        });
+        
+        profilePhoto.addEventListener('mouseleave', () => {
+            const silhouette = profilePhoto.querySelector('.silhouette');
+            if (silhouette) {
+                silhouette.style.transform = 'scale(1) rotate(0deg)';
+            }
+        });
+    }
+}
+
+function capitalizeFirst(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function formatDate(date) {
+    return date.toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+}
+
+function validateProfile() {
+    const errors = [];
+    
+    if (!userProfile.description || userProfile.description.length < 20) {
+        errors.push('La descripción debe tener al menos 20 caracteres');
+    }
+    
+    if (!userProfile.preferences.relacion) {
+        errors.push('Selecciona el tipo de relación que buscas');
+    }
+    
+    if (!userProfile.preferences.ubicacion) {
+        errors.push('Selecciona tu ubicación');
+    }
+    
+    return errors;
+}
+
+setTimeout(enableAutoSave, 5000);
+
+    if (e.key === 'Escape' && photoModal && photoModal.style.display === 'block') {
+        closePhotoModal();
+    }
 });
