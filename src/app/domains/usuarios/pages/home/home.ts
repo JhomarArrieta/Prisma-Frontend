@@ -6,7 +6,6 @@ import { HomeProfileContainer } from '../home-profile-container/home-profile-con
 import { HomeNavMenu } from '../home-nav-menu/home-nav-menu';
 import { UserCompleted } from '../../models/usuario';
 import { UsuariosApi } from '../../services/usuarios-api';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -22,8 +21,6 @@ export class Home {
 
     
   constructor(){
-    this.userId = this.userService.getUserId();
-
     this.userService.traerUsuariosPorPreferencias(this.userId).subscribe({
       next: (usersPref) => {
       for (const user of usersPref){
