@@ -1,1 +1,15 @@
-<p>home works!</p>
+<div class="home-page">
+  <div class="sidebar">
+    <app-home-user-info></app-home-user-info>
+    <app-home-nav-menu></app-home-nav-menu>
+  </div>
+  <div class="home-container">
+    <app-home-main-content></app-home-main-content>
+    @if(user){
+      <app-home-profile-container [user]="user"></app-home-profile-container>
+    } @else {
+      <p>Cargando perfiles...</p>
+    }   
+    <app-home-action-buttons (passed)="buttonPassed($event)"></app-home-action-buttons>
+  </div>
+</div>

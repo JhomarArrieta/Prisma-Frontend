@@ -1,8 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment.prod';
-import { AuthResponse, Login, Usuario, UsuarioDTO } from '../models/usuario';
+import { UserCompleted, Usuario, UsuarioDTO } from '../models/usuario';
+import { AuthResponse, Login } from '../models/authentication';
 import { catchError, Observable, tap, throwError } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +16,12 @@ export class UsuariosApi {
  // Signal for reactive state management 
   private readonly isLoadingSignal = signal<boolean>(false);
   private readonly usuariosSignal = signal<Usuario[]>([]);
+  private readonly userCSignal = signal<UserCompleted[]>([]);
 
 // Readonly signals for external consumption
   public readonly isLoading = this.isLoadingSignal.asReadonly();
   public readonly usuarios = this.usuariosSignal.asReadonly();
+  public readonly usersC = this.userCSignal.asReadonly();
 
   createUsuario(usuario: UsuarioDTO): Observable<Usuario> {
     this.isLoadingSignal.set(true);
@@ -44,6 +48,35 @@ export class UsuariosApi {
           localStorage.setItem('token', res.token);
           localStorage.setItem('email', res.email);
           localStorage.setItem('admin', String(res.administrador));
+        }),
+        catchError(error => {
+          this.isLoadingSignal.set(false);
+          return this.handleError(error);
+        })
+      );
+  }
+
+  getUserId(): number | null {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+
+    try {
+      const decoded: any = jwtDecode(token);
+      return decoded.id || null; // según el nombre del claim que pusiste en el backend
+    } catch (error) {
+      console.error('Token inválido', error);
+      return null;
+    }
+  }
+
+    traerUsuariosPorPreferencias(id_usuario: number): Observable<UserCompleted[]> {
+    this.isLoadingSignal.set(true);
+
+    return this.http.get<UserCompleted[]>(`${this.apiUrl}/candidatos/${id_usuario}`)
+      .pipe(
+        tap(usersC => {
+          this.userCSignal.set(usersC);
+          this.isLoadingSignal.set(false);
         }),
         catchError(error => {
           this.isLoadingSignal.set(false);

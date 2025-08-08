@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsuariosApi } from '../../../../../domains/usuarios/services/usuarios-api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth-form-signin',
@@ -17,7 +18,7 @@ export class AuthFormSignIn{
   listaOpciones = ['Medellín', 'Bello', 'Sabaneta', 'Envigado', 'Itagüí'];
   private usuarioService: UsuariosApi = inject(UsuariosApi);
   
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.form = this.fb.group({
       id: [null],
       primer_nombre: ['', Validators.required],
@@ -50,6 +51,7 @@ export class AuthFormSignIn{
     }).subscribe({
       next: (response) => {
         console.log('Usuario creado exitosamente:', response);
+        window.location.reload();
       },
       error: (error) => {
         console.error('Error al crear el usuario:', error);

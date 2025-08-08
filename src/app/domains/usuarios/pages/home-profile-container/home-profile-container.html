@@ -1,0 +1,15 @@
+<div class="profile-container">
+  <div class="profile-photo-box">
+      <img class="profile-photo" src="{{ user.foto }}" alt="Foto de perfil" />
+    </div>
+
+    <div class="profile-info-box">
+      <h1 class="profile-name">{{ user.primer_nombre }}</h1>
+      <h2 class="profile-lastname">{{ user.primer_apellido }}</h2>
+      <div class="profile-details">{{ user.ubicacion }}</div>
+
+      <div class="section-title">Preferencias</div>
+      <div class="section-content">{{ user.tipo_relacion }}</div>
+    </div>
+
+</div>
