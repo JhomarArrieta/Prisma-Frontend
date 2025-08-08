@@ -1,0 +1,45 @@
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    padding: 0 2rem;
+}
+
+.action-btn {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-back {
+    color: #FFB4C8;
+    background: white;
+}
+
+.btn-reject {
+    color: #FFB4C8;
+    background: white;
+}
+
+.btn-like {
+    color: #FFB4C8;
+    background: white;
+}
+
+.btn-info {
+   color: #FFB4C8;
+    background: white;
+}
+
+.action-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
