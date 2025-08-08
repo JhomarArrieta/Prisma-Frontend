@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+/*import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-profile-preferences',
@@ -9,3 +9,15 @@ import { Component } from '@angular/core';
 export class ProfilePreferences {
 
 }
+*/
+
+import { Component, ViewEncapsulation } from '@angular/core';
+
+@Component({
+  selector: 'app-profile-preferences',
+  standalone: true,
+  templateUrl: './profile-preferences.html',
+  styleUrls: ['./profile-preferences.css'],
+  encapsulation: ViewEncapsulation.None
+})
+export class ProfilePreferences {}

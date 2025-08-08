@@ -12,3 +12,544 @@ body {
     min-height: 100vh;
     color: #333;
 }
+
+.container {
+    width: 100vw;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 15px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #FFB4C8, #FF8FA3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 4px 15px rgba(255, 180, 200, 0.3);
+}
+
+.logo h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: -0.5px;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 180, 200, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.nav-icon:hover {
+    background: rgba(255, 180, 200, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 180, 200, 0.2);
+}
+
+.profile-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.profile-photo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-photo {
+    width: 250px;
+    height: 350px;
+    background: linear-gradient(135deg, #FFB4C8 0%, #FF8FA3 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(255, 180, 200, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 180, 200, 0.4);
+}
+
+.silhouette {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.silhouette-head {
+    width: 80px;
+    height: 80px;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.silhouette-body {
+    width: 100px;
+    height: 60px;
+    background: #333;
+    border-radius: 50px 50px 0 0;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.edit-photo-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 240, 230, 0.8);
+    border: 2px solid rgba(255, 180, 200, 0.3);
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    font-weight: 500;
+}
+
+.edit-photo-btn:hover {
+    background: rgba(255, 240, 230, 0.9);
+    border-color: rgba(255, 180, 200, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 180, 200, 0.2);
+}
+
+.edit-icon {
+    font-size: 18px;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-section {
+    background: rgba(255, 240, 230, 0.6);
+    border-radius: 20px;
+    padding: 25px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 180, 200, 0.2);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #FFB4C8;
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+}
+
+.description-container {
+    position: relative;
+}
+
+.description-input {
+    width: 100%;
+    min-height: 120px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 180, 200, 0.3);
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #555;
+    resize: vertical;
+    outline: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.description-input:focus {
+    border-color: #FFB4C8;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(255, 180, 200, 0.1);
+}
+
+.description-input::placeholder {
+    color: #aaa;
+}
+
+.character-count {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 0.9rem;
+    color: #888;
+    pointer-events: none;
+}
+
+.preferences-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.preferences-column,
+.interests-column {
+    background: rgba(255, 240, 230, 0.6);
+    border-radius: 20px;
+    padding: 25px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 180, 200, 0.2);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 180, 200, 0.3);
+    border-radius: 25px;
+    padding: 15px 20px;
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    appearance: none;
+    backdrop-filter: blur(10px);
+    position: relative;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFB4C8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    padding-right: 45px;
+}
+
+.form-select:hover {
+    border-color: rgba(255, 180, 200, 0.5);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.form-select:focus {
+    border-color: #FFB4C8;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 20px rgba(255, 180, 200, 0.1);
+}
+
+.save-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.save-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #FFB4C8, #FF8FA3);
+    border: none;
+    border-radius: 25px;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 5px 20px rgba(255, 180, 200, 0.3);
+}
+
+.save-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 180, 200, 0.4);
+    background: linear-gradient(135deg, #FF8FA3, #FF6B8A);
+}
+
+.save-btn:active {
+    transform: translateY(-1px);
+}
+
+.save-icon {
+    font-size: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF0E6 100%);
+    margin: 5% auto;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid rgba(255, 180, 200, 0.2);
+}
+
+.modal-header h3 {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #888;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: rgba(255, 180, 200, 0.2);
+    color: #333;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+.upload-area {
+    border: 2px dashed rgba(255, 180, 200, 0.5);
+    border-radius: 15px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 240, 230, 0.3);
+}
+
+.upload-area:hover {
+    border-color: #FFB4C8;
+    background: rgba(255, 240, 230, 0.5);
+}
+
+.upload-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.upload-area p {
+    color: #666;
+    font-size: 1rem;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.btn-secondary,
+.btn-primary {
+    padding: 12px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-secondary {
+    background: rgba(255, 180, 200, 0.2);
+    color: #666;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 180, 200, 0.3);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #FFB4C8, #FF8FA3);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #FF8FA3, #FF6B8A);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 180, 200, 0.3);
+}
+
+@media (max-width: 1024px) {
+    .profile-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .profile-photo-section {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .profile-photo {
+        width: 200px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+    
+    .profile-photo-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .preferences-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .profile-photo {
+        width: 180px;
+        height: 250px;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-section,
+    .preferences-column,
+    .interests-column {
+        padding: 20px;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .profile-photo {
+        width: 160px;
+        height: 220px;
+    }
+    
+    .silhouette {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .silhouette-head {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .silhouette-body {
+        width: 70px;
+        height: 40px;
+    }
+}
+
+.nav-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 180, 200, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.nav-icon:hover {
+    background: rgba(255, 180, 200, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 180, 200, 0.2);
+}
+
+.debug{
+    border: solid 1px red;
+}

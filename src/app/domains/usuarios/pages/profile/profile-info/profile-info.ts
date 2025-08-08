@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+/*import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-profile-info',
@@ -9,3 +9,15 @@ import { Component } from '@angular/core';
 export class ProfileInfo {
 
 }
+*/
+
+import { Component, ViewEncapsulation } from '@angular/core';
+
+@Component({
+  selector: 'app-profile-info',
+  standalone: true,
+  templateUrl: './profile-info.html',
+  styleUrls: ['./profile-info.css'],
+  encapsulation: ViewEncapsulation.None
+})
+export class ProfileInfo {}

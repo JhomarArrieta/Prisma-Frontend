@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-profile-interest',
-  imports: [],
+  standalone: true,
   templateUrl: './profile-interest.html',
-  styleUrl: './profile-interest.css'
+  styleUrls: ['./profile-interest.css'],
+  encapsulation: ViewEncapsulation.None
 })
-export class ProfileInterest {
-
-}
+export class ProfileInterest {}

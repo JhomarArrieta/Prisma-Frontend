@@ -1,9 +1,39 @@
-<div class="preferences-container">
-  <h3>Preferences</h3>
-  <ul class="preferences-list">
-    <li>Relacion Seria</li>
-    <li>Casual</li>
-    <li>Amistad</li>
-  </ul>
-</div>
-<p>profile-preferences works!</p>
+<div class="preferences-grid">
+                    <div class="preferences-column">
+                        <h2 class="section-title">Preferencias</h2>
+                        
+                        <div class="form-group">
+                            <select id="relacion" class="form-select">
+                                <option value="seria">Relación Seria</option>
+                                <option value="casual">Relación Casual</option>
+                                <option value="amistad">Solo Amistad</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select id="hijos" class="form-select">
+                                <option value="quiero">Quiero Tener Hijos</option>
+                                <option value="no_quiero">No Quiero Hijos</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select id="ubicacion" class="form-select">
+                                <option value="">Valle de Aburrá</option>
+                                <option value="medellin">Medellín</option>
+                                <option value="bello">Bello</option>
+                                <option value="envigado">Envigado</option>
+                                <option value="itagui">Itagüí</option>
+                                <option value="sabaneta">Sabaneta</option>
+                                <option value="copacabana">Copacabana</option>
+                                <option value="caldas">Caldas</option>
+                            </select>
+                        </div>
+                    </div>
+
+<div class="save-section">
+                    <button class="save-btn" id="saveBtn">
+                        <span>Guardar Cambios</span>
+                    </button>
+                </div>
+            </div>

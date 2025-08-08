@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+/*import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-profile-image',
@@ -9,3 +9,15 @@ import { Component } from '@angular/core';
 export class ProfileImage {
 
 }
+*/
+
+import { Component, ViewEncapsulation } from '@angular/core';
+
+@Component({
+  selector: 'app-profile-image',
+  standalone: true,
+  templateUrl: './profile-image.html',
+  styleUrls: ['./profile-image.css'],
+  encapsulation: ViewEncapsulation.None
+})
+export class ProfileImage {}
