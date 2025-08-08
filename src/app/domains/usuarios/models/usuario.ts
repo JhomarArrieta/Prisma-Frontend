@@ -24,13 +24,10 @@ export interface UsuarioDTO {
     fecha_nacimiento: Date;
 }
 
-export interface Login {
-  email: string;
-  contrasena: string;
-}
-
-export interface AuthResponse {
-  token: string;
-  email: string;
-  administrador: boolean;
+export interface UserCompleted {
+  primer_nombre: string;
+  primer_apellido: string;
+  ubicacion: string;
+  tipo_relacion: string;
+  foto: string;
 }

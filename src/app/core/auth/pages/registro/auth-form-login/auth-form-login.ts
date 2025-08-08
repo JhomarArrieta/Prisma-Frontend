@@ -27,7 +27,8 @@ export class AuthFormLogin {
       next: (res) => {
         console.log('Login exitoso', res);
         // Aquí puedes redirigir a otra página, guardar más cosas o actualizar UI
-        this.router.navigate(['/home']);
+        localStorage.setItem('token', res.token);
+        this.router.navigate([`/home`]);
       },
       error: (err) => {
         console.log('Login fallido', err);

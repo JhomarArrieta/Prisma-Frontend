@@ -5,7 +5,7 @@
   </div>
   <div class="home-container">
     <app-home-main-content></app-home-main-content>
-    <app-home-profile-container></app-home-profile-container>
-    <app-home-action-buttons></app-home-action-buttons>
+    <app-home-profile-container [user]="user"></app-home-profile-container>
+    <app-home-action-buttons (passed)="buttonPassed($event)"></app-home-action-buttons>
   </div>
 </div>

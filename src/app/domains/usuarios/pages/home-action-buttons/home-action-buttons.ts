@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-home-action-buttons',
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './home-action-buttons.css'
 })
 export class HomeActionButtons {
+  @Output() passed = new EventEmitter<boolean>();
 
+  siguiente(){
+    this.passed.emit(true);
+  }
 }
