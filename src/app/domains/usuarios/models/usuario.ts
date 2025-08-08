@@ -23,3 +23,14 @@ export interface UsuarioDTO {
     administrador?: boolean;
     fecha_nacimiento: Date;
 }
+
+export interface Login {
+  email: string;
+  contrasena: string;
+}
+
+export interface AuthResponse {
+  token: string;
+  email: string;
+  administrador: boolean;
+}
