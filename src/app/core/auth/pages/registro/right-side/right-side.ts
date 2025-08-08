@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { AuthHeader } from "./auth-header/auth-header";
-import { AuthTabs } from "./auth-tabs/auth-tabs";
-import { AuthForm } from "./auth-form/auth-form";
-import { ForgotPassword } from "./forgot-password/forgot-password";
+import { AuthHeader } from '../auth-header/auth-header';
+import { AuthTabs } from '../auth-tabs/auth-tabs';
+import { AuthForm } from '../auth-form/auth-form';
+import { ForgotPassword } from '../forgot-password/forgot-password';
 
 @Component({
   selector: 'app-right-side-registro',
