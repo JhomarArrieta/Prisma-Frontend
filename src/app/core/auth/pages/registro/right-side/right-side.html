@@ -1,0 +1,8 @@
+<div class="right-side">
+  <div class="auth-container">
+    <app-auth-header-right-side></app-auth-header-right-side>
+    <app-auth-tabs-right-side (currentTabLogin)="actualizarTipoForm($event)"></app-auth-tabs-right-side>
+    <app-auth-form-right-side [tabLogin]="tipoFormLogin"></app-auth-form-right-side>
+    <app-forgot-password-right-side></app-forgot-password-right-side>
+  </div>
+</div>

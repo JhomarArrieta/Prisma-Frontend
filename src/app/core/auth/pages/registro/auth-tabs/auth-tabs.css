@@ -1,0 +1,28 @@
+.auth-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    background-color: #FEDBD6;
+    border-radius: 15px;
+    padding: 0.25rem;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 0.75rem;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    color: #000000;
+}
+
+.tab-btn.active {
+    background-color: #FFB4C8;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.tab-btn:hover:not(.active) {
+    background-color: rgba(255, 180, 200, 0.5);
+}
