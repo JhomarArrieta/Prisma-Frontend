@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment.prod';
-import { Usuario, UsuarioDTO } from '../models/usuario';
+import { AuthResponse, Login, Usuario, UsuarioDTO } from '../models/usuario';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 
 @Injectable({
@@ -28,6 +28,22 @@ export class UsuariosApi {
           const currentUsuarios = this.usuariosSignal();
           this.usuariosSignal.set([...currentUsuarios, newUsuario]);
           this.isLoadingSignal.set(false);
+        }),
+        catchError(error => {
+          this.isLoadingSignal.set(false);
+          return this.handleError(error);
+        })
+      );
+  }
+
+    autenticar(loginData: Login): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/autenticar`, loginData)
+      .pipe(
+        tap(res => {
+          // Guarda el token y datos en localStorage (o donde prefieras)
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('email', res.email);
+          localStorage.setItem('admin', String(res.administrador));
         }),
         catchError(error => {
           this.isLoadingSignal.set(false);

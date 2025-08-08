@@ -24,7 +24,7 @@ export class AuthFormSignIn{
       segundo_nombre: [''],
       primer_apellido: ['', Validators.required],
       segundo_apellido: [''],
-      ubicacion: [''],
+      ubicacion: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       contrasena: ['', [Validators.required, Validators.minLength(8)]],
       administrador: [false],
