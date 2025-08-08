@@ -1,15 +1,15 @@
-import { Component, signal } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { LeftSide } from "./core/auth/pages/registro/left-side/left-side";
-import { RightSide } from "./core/auth/pages/registro/right-side/right-side";
-import { Registro } from "./core/auth/pages/registro/registro";
+import { Component, inject, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { UsuariosApi } from './domains/usuarios/services/usuarios-api';
+import { Registro } from "./core/auth/pages/registro/registro/registro";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, LeftSide, RightSide, Registro],
+  imports: [RouterOutlet, Registro],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('angular1');
+
 }
