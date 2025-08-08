@@ -13,6 +13,13 @@
     padding-right: 20%;
 }
 
+.home-container p {
+    color: #707070;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
 .sidebar {
     width: 300px;
     background: rgba(255, 255, 255, 0.2);

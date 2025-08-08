@@ -5,7 +5,11 @@
   </div>
   <div class="home-container">
     <app-home-main-content></app-home-main-content>
-    <app-home-profile-container [user]="user"></app-home-profile-container>
+    @if(user){
+      <app-home-profile-container [user]="user"></app-home-profile-container>
+    } @else {
+      <p>Cargando perfiles...</p>
+    }   
     <app-home-action-buttons (passed)="buttonPassed($event)"></app-home-action-buttons>
   </div>
 </div>

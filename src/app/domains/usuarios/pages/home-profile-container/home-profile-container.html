@@ -1,5 +1,4 @@
 <div class="profile-container">
-@if(user){
   <div class="profile-photo-box">
       <img class="profile-photo" src="{{ user.foto }}" alt="Foto de perfil" />
     </div>
@@ -12,9 +11,5 @@
       <div class="section-title">Preferencias</div>
       <div class="section-content">{{ user.tipo_relacion }}</div>
     </div>
-} @else {
-  <p>Cargando...</p>
-}
-    
 
 </div>

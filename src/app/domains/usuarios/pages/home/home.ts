@@ -16,11 +16,13 @@ import { UsuariosApi } from '../../services/usuarios-api';
 export class Home {
     private users: UserCompleted[] = [];
     private userService: UsuariosApi = inject(UsuariosApi);
-    public user: UserCompleted = this.users.pop()!;
-    userId: number = this.userService.getUserId()!;
 
-    
+    public user: UserCompleted | undefined;
+    public userId: number | undefined;
+
   constructor(){
+    this.userId = this.userService.getUserId()!;
+
     this.userService.traerUsuariosPorPreferencias(this.userId).subscribe({
       next: (usersPref) => {
       for (const user of usersPref){
@@ -31,6 +33,9 @@ export class Home {
           tipo_relacion: user.tipo_relacion,
           foto: user.foto
       });
+
+      this.user = this.users.pop();
+      
     }
     }, error: (err) => {
       console.error('Error al traer usuarios', err);
