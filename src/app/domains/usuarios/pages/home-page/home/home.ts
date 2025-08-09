@@ -4,8 +4,8 @@ import { HomeActionButtons } from '../home-action-buttons/home-action-buttons';
 import { HomeMainContent } from '../home-main-content/home-main-content';
 import { HomeProfileContainer } from '../home-profile-container/home-profile-container';
 import { HomeNavMenu } from '../home-nav-menu/home-nav-menu';
-import { UserCompleted } from '../../models/usuario';
-import { UsuariosApi } from '../../services/usuarios-api';
+import { UserCompleted } from '../../../models/usuario';
+import { UsuariosApi } from '../../../services/usuarios-api';
 
 @Component({
   selector: 'app-home',
@@ -46,6 +46,7 @@ export class Home {
   buttonPassed(passed: boolean){
     if(passed){
       this.user = this.users.pop()!;
+      window.location.reload();
     }
   }
 }

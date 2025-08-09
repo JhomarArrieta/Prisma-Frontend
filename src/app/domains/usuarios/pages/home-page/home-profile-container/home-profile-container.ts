@@ -1,6 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
-import { UserCompleted, Usuario } from '../../models/usuario';
-import { UsuariosApi } from '../../services/usuarios-api';
+import { UserCompleted, Usuario } from '../../../models/usuario';
+import { UsuariosApi } from '../../../services/usuarios-api';
 
 @Component({
   selector: 'app-home-profile-container',
